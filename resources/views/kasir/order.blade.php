@@ -17,7 +17,7 @@
               <div class="card-header">
                 <h4 class="card-title">Menu</h4>
                 <div class="float-right">
-                  <button type="submit" class="btn btn-sm btn-success"><i class="feather icon-plus"></i> Pembayaran</button>
+                  <button type="button" class="btn btn-sm btn-success"><i class="feather icon-plus"></i> Pembayaran</button>
                 </div>
               </div>
               <div class="card-content">

@@ -78,9 +78,9 @@
             </ul>
         </div>
         <div class="shadow-bottom"></div>
-        {{-- @include('kasir.sidebar') --}}
+        @include('kasir.sidebar')
         {{-- @include('admin.sidebar') --}}
-        @include('superadmin.sidebar')
+        {{-- @include('superadmin.sidebar') --}}
     </div>
     <!-- END: Main Menu-->
 
