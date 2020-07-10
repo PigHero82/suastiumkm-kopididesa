@@ -17,7 +17,9 @@
               <div class="card-header">
                 <h4 class="card-title">Menu</h4>
                 <div class="float-right">
-                  <button type="button" class="btn btn-sm btn-success"><i class="feather icon-plus"></i> Pembayaran</button>
+                  <a href="{{ route('kasir.pembayaran') }}">
+                    <button type="button" class="btn btn-sm btn-success"><i class="feather icon-plus"></i> Pembayaran</button>
+                  </a>
                 </div>
               </div>
               <div class="card-content">

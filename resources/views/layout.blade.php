@@ -52,7 +52,11 @@
                     <ul class="nav navbar-nav float-right">
                         <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li>
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">John Doe</span><span class="user-status">Available</span></div><span><img class="round" src="{{ asset('/app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"></span>
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">Kasir 1</span><span class="user-status">Outlet Resto</span></div><span><div class="avatar bg-primary mr-1">
+                                    <div class="avatar-content">
+                                      K
+                                    </div>
+                                  </div></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                               <a class="dropdown-item" href="#"><i class="feather icon-power"></i> Logout</a>
@@ -70,7 +74,7 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="/html/ltr/vertical-collapsed-menu-template/index.html">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('kasir.order') }}">
                         <div class="brand-logo"></div>
                         <h2 class="brand-text mb-0">Vuexy</h2>
                     </a></li>
@@ -79,8 +83,8 @@
         </div>
         <div class="shadow-bottom"></div>
         @include('kasir.sidebar')
-        {{-- @include('admin.sidebar') --}}
-        {{-- @include('superadmin.sidebar') --}}
+        @include('admin.sidebar')
+        @include('superadmin.sidebar')
     </div>
     <!-- END: Main Menu-->
 

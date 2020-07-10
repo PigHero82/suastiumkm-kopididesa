@@ -12,53 +12,29 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return redirect('/kasir');
-});
+Route::redirect('/', '/kasir', 301);
 
 // Kasir
 Route::prefix('kasir')->group(function () {
-    Route::get('/', function () {
-        return view('kasir.order');
-    });
-    Route::get('/penjualan', function () {
-        return view('kasir.penjualan');
-    });
-    Route::get('/pembayaran', function () {
-        return view('kasir.pembayaran');
-    });
+    Route::view('/', 'kasir.order')->name('kasir.order');
+    Route::view('/penjualan', 'kasir.penjualan')->name('kasir.penjualan');
+    Route::view('/pembayaran', 'kasir.pembayaran')->name('kasir.pembayaran');
 });
 
 //Admin
-Route::prefix('admin')->group(function (){
-    Route::get('/', function () {
-        return view('admin.pembelanjaan');
-    });
-    Route::get('/stok', function () {
-        return view('admin.stok');
-    });
-    Route::get('/hpp', function () {
-        return view('admin.hpp');
-    });
+Route::prefix('admin')->group(function () {
+    Route::view('/', 'admin.pembelanjaan')->name('admin.pembelanjaan');
+    Route::view('/stok', 'admin.stok')->name('admin.stok');
+    Route::view('/hpp', 'admin.hpp')->name('admin.hpp');
 });
 
 //Superadmin
-Route::prefix('superadmin')->group(function (){
-    Route::get('/', function () {
-        return view('superadmin.labarugi');
-    });
-    Route::get('/stok', function () {
-        return view('superadmin.stok');
-    });
-    Route::get('/laporan', function () {
-        return view('superadmin.laporan');
-    });
-    Route::get('/laporan/a', function () {
-        return view('superadmin.laporana');
-    });
+Route::prefix('superadmin')->group(function () {
+    Route::view('/', 'superadmin.labarugi')->name('superadmin.labarugi');
+    Route::view('/stok', 'superadmin.stok')->name('superadmin.stok');
+    Route::view('/laporan', 'superadmin.laporan')->name('superadmin.laporan');
+    Route::view('/laporan/a', 'superadmin.laporana')->name('superadmin.laporana');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
