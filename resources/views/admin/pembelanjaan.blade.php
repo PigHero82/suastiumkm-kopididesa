@@ -80,7 +80,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="{{ route('admin.store') }}" method="POST" novalidate>
+          <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="modal-body">
               <div class="form-group">
@@ -98,7 +98,7 @@
                       <div class="col-6">
                         <select name="nama[]" class="form-control">
                           @foreach ($stok as $item)
-                              <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                              <option value="{{ $item->id }}">{{ $item->nama }} ({{ $item->satuan }})</option>
                           @endforeach
                         </select>
                       </div>

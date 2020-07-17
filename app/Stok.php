@@ -45,4 +45,16 @@ class Stok extends Model
     {
         Stok::whereId($id)->delete();
     }
+
+    public static function storeStok($request)
+    {
+        $length = count($request->nama);
+        for ($i=0; $i < $length ; $i++) {
+            $data = Stok::whereId($request->nama[$i])->first();
+            // return $request->jumlah[$i];
+            Stok::whereId($request->nama[$i])->update([
+                'jumlah' => $data->jumlah + $request->jumlah[$i]
+            ]);
+        }
+    }
 }

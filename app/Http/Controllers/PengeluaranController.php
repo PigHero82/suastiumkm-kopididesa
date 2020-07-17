@@ -40,6 +40,7 @@ class PengeluaranController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $bukti = $request->file('nota');
         $nota = rand() . '.' . $bukti->getClientOriginalExtension();
         $bukti->move('images/blog', $nota);
@@ -47,7 +48,11 @@ class PengeluaranController extends Controller
 
         $id = Nota::get($nota);
 
-        
+        Pengeluaran::store($request, $id->id);
+
+        Stok::storeStok($request);
+
+        return redirect()->back();
     }
 
     /**

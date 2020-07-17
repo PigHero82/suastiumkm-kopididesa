@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nota extends Model
 {
+    protected $table = 'nota';
     protected $fillable = ['gambar'];
 
     public static function store($nota)
