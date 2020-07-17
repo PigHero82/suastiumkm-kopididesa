@@ -19,15 +19,24 @@ Route::redirect('/', '/kasir', 301);
 
 // Kasir
 Route::prefix('kasir')->group(function () {
-    Route::view('/', 'kasir.order')->name('kasir.order');
+    // Route::view('/', 'kasir.order')->name('kasir.order');
+    Route::resource('/', 'KasirController')->names([
+        'index' => 'kasir.index',
+        'store' => 'kasir.store'
+    ]);
     Route::view('/penjualan', 'kasir.penjualan')->name('kasir.penjualan');
     Route::view('/pembayaran', 'kasir.pembayaran')->name('kasir.pembayaran');
 });
 
 //Admin
 Route::prefix('admin')->group(function () {
-    Route::view('/', 'admin.pembelanjaan')->name('admin.pembelanjaan');
-    Route::view('/stok', 'admin.stok')->name('admin.stok');
+    Route::resource('/', 'PengeluaranController')->names([
+        'index' => 'admin.index',
+        'store' => 'admin.store'
+    ]);
+    // Route::view('/', 'admin.pembelanjaan')->name('admin.pembelanjaan');
+    Route::resource('/stok', 'StokController')->except(['update']);
+    Route::post('/stok/update', 'StokController@update')->name('stok.update');
     Route::view('/hpp', 'admin.hpp')->name('admin.hpp');
 });
 

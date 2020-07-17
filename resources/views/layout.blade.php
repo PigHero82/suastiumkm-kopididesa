@@ -74,7 +74,7 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('kasir.order') }}">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('kasir.index') }}">
                         <div class="brand-logo"></div>
                         <h2 class="brand-text mb-0">Vuexy</h2>
                     </a></li>
@@ -82,9 +82,9 @@
             </ul>
         </div>
         <div class="shadow-bottom"></div>
-        @include('kasir.sidebar')
+        {{-- @include('kasir.sidebar') --}}
         @include('admin.sidebar')
-        @include('superadmin.sidebar')
+        {{-- @include('superadmin.sidebar') --}}
     </div>
     <!-- END: Main Menu-->
 
