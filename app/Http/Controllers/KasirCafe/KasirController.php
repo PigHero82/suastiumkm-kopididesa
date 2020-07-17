@@ -1,15 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\KasirCafe;
 
-use App\Pengeluaran;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Stok;
-use App\Nota;
-
-class PengeluaranController extends Controller
+class KasirController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:kasircafe');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +25,7 @@ class PengeluaranController extends Controller
      */
     public function index()
     {
-        $stok = Stok::get();
-
-        return view('admin.pembelanjaan', compact('stok'));
+        return view('kasir.order');
     }
 
     /**
@@ -40,28 +46,16 @@ class PengeluaranController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        $bukti = $request->file('nota');
-        $nota = rand() . '.' . $bukti->getClientOriginalExtension();
-        $bukti->move('images/blog', $nota);
-        Nota::store($nota);
-
-        $id = Nota::get($nota);
-
-        Pengeluaran::store($request, $id->id);
-
-        Stok::storeStok($request);
-
-        return redirect()->back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pengeluaran  $pengeluaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Pengeluaran $pengeluaran)
+    public function show($id)
     {
         //
     }
@@ -69,10 +63,10 @@ class PengeluaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pengeluaran  $pengeluaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pengeluaran $pengeluaran)
+    public function edit($id)
     {
         //
     }
@@ -81,10 +75,10 @@ class PengeluaranController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pengeluaran  $pengeluaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pengeluaran $pengeluaran)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -92,10 +86,10 @@ class PengeluaranController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pengeluaran  $pengeluaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengeluaran $pengeluaran)
+    public function destroy($id)
     {
         //
     }

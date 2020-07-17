@@ -1,12 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminCafe;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 use App\Menu;
-use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:admincafe');
+    }
+
     /**
      * Display a listing of the resource.
      *

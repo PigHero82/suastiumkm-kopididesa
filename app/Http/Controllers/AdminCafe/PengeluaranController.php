@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminCafe;
 
-use App\Nota;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class NotaController extends Controller
+use App\Nota;
+use App\Pengeluaran;
+use App\Stok;
+
+class PengeluaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +18,9 @@ class NotaController extends Controller
      */
     public function index()
     {
-        //
+        $stok = Stok::get();
+
+        return view('admin.pembelanjaan', compact('stok'));
     }
 
     /**
@@ -35,16 +41,28 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $bukti = $request->file('nota');
+        $nota = rand() . '.' . $bukti->getClientOriginalExtension();
+        $bukti->move('images/blog', $nota);
+        Nota::store($nota);
+
+        $id = Nota::get($nota);
+
+        Pengeluaran::store($request, $id->id);
+
+        Stok::storeStok($request);
+
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Nota  $nota
+     * @param  \App\Pengeluaran  $pengeluaran
      * @return \Illuminate\Http\Response
      */
-    public function show(Nota $nota)
+    public function show(Pengeluaran $pengeluaran)
     {
         //
     }
@@ -52,10 +70,10 @@ class NotaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Nota  $nota
+     * @param  \App\Pengeluaran  $pengeluaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(Nota $nota)
+    public function edit(Pengeluaran $pengeluaran)
     {
         //
     }
@@ -64,10 +82,10 @@ class NotaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Nota  $nota
+     * @param  \App\Pengeluaran  $pengeluaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nota $nota)
+    public function update(Request $request, Pengeluaran $pengeluaran)
     {
         //
     }
@@ -75,10 +93,10 @@ class NotaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Nota  $nota
+     * @param  \App\Pengeluaran  $pengeluaran
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Nota $nota)
+    public function destroy(Pengeluaran $pengeluaran)
     {
         //
     }
