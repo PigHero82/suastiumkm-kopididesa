@@ -1,12 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\KasirCafe;
 
-use App\Nota;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class NotaController extends Controller
+class KasirController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:kasircafe');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,7 @@ class NotaController extends Controller
      */
     public function index()
     {
-        //
+        return view('kasir.order');
     }
 
     /**
@@ -41,10 +52,10 @@ class NotaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Nota  $nota
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Nota $nota)
+    public function show($id)
     {
         //
     }
@@ -52,10 +63,10 @@ class NotaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Nota  $nota
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Nota $nota)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +75,10 @@ class NotaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Nota  $nota
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nota $nota)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +86,10 @@ class NotaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Nota  $nota
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Nota $nota)
+    public function destroy($id)
     {
         //
     }

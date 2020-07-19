@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminCafe;
 
-use App\Pengeluaran;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Stok;
 use App\Nota;
+use App\Pengeluaran;
+use App\Stok;
 
 class PengeluaranController extends Controller
 {
