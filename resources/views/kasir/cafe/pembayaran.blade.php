@@ -30,34 +30,24 @@
                                     <th colspan="2" style="width:30%">Biaya</th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                        Kopi Kita Premium<br>
-                                        <span class="ml-2">x 1</span>
-                                        </td>
-                                        <td>Rp. 25.000</td>
-                                        <td><button type="button" style="padding: 0; border: none; background: none;" class="action-edit text-danger" ><i class="feather icon-trash"></i></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kopi Leak Kaleng<br>
-                                        <span class="ml-2">x 2</span>
-                                        </td>
-                                        <td>Rp. 29.000</td>
-                                        <td><button type="button" style="padding: 0; border: none; background: none;" class="action-edit text-danger" ><i class="feather icon-trash"></i></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kopi Kita Serasi<br>
-                                        <span class="ml-2">x 2</span></td>
-                                        <td>Rp. 15.000</td>
-                                        <td><button type="button" style="padding: 0; border: none; background: none;" class="action-edit text-danger" ><i class="feather icon-trash"></i></span></td>
-                                    </tr>
+                                    @foreach ($detailPenjualan['items'] as $item)
+                                        <tr>
+                                            <td>{{ $item['nama'] }}<br>
+                                            <span class="ml-2">x {{ $item['jumlah'] }}</span>
+                                            </td>
+                                            <td>Rp. {{ number_format($item['harga'], 0, ',', '.') }}</td>
+                                            <td><button type="button" style="padding: 0; border: none; background: none;" class="action-edit text-danger" ><i class="feather icon-trash"></i></span></td>
+                                        </tr>
+                                    @endforeach
                                     <tr>
                                         <td class="text-right text-bold">TOTAL</td>
-                                        <td>Rp. 69.000</td>
+                                        <td>Rp. {{ number_format($detailPenjualan['total_harga'], 0, ',', '.') }}</td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <a href="{{ route('kasir.order') }}">
+                                            {{-- <form action="{{ route('kasir.cafe.') }}" method="post"></form> --}}
+                                            {{-- <a href="{{ route('kasir.order') }}"> --}}
+                                            <a href="#">
                                                 <button type="button" class="btn btn-primary">Tambah</button>
                                             </a>
                                         </td>
@@ -94,19 +84,19 @@
                         <div class="form-group">
                             <div class="controls">
                                 <label>TOTAL: </label>
-                                <h2 class="ml-1 float-right">Rp. 69.000</h2>
+                                <h2 class="ml-1 float-right">Rp. {{ number_format($detailPenjualan['total_harga'], 0, ',', '.') }}</h2>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="controls">
                                 <label>Cash: </label>
-                                <input type="number" required value="70000" class="form-control" data-validation-required-message="Tidak boleh kosong">
+                                <input type="number" required class="form-control" data-validation-required-message="Tidak boleh kosong">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="controls">
                                 <label>Kembali: </label>
-                                <input type="text" disabled value="-1000" class="form-control" data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="Uang kurang.">
+                                <input type="text" disabled class="form-control" data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="Uang kurang.">
                             </div>
                         </div>
 

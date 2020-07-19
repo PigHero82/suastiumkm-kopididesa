@@ -26,15 +26,21 @@
                                 <table class="table zero-configuration">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>No.</th>
+                                            <th>ID Penjualan</th>
+                                            <th>Total Harga</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($penjualan as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item['penjualan']['id'] }}</td>
+                                                <td>{{ number_format($item['penjualan']['total_harga'], 0, ',', '.') }}</td>
+                                                <td><button type="button" style="padding: 0; border: none; background: none;" class="action-edit text-primary" title="Lihat Penjualan"><i class="feather icon-eye"></i></span></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

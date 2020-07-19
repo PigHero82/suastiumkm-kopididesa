@@ -18,5 +18,8 @@ class HomeController extends Controller
         $this->middleware('role:superadmin');
     }
 
-
+    public function index()
+    {
+        return view('superadmin.labarugi');
+    }
 }

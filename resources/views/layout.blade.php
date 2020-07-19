@@ -83,7 +83,7 @@
         </div>
         <div class="shadow-bottom"></div>
         {{-- @include('kasir.sidebar') --}}
-        @include('admin.sidebar')
+        @include('sidebar')
         {{-- @include('superadmin.sidebar') --}}
     </div>
     <!-- END: Main Menu-->
