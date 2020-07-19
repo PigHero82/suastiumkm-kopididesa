@@ -43,7 +43,7 @@ class PengeluaranController extends Controller
         // return $request;
         $bukti = $request->file('nota');
         $nota = rand() . '.' . $bukti->getClientOriginalExtension();
-        $bukti->move('images/blog', $nota);
+        $bukti->move('images/produk', $nota);
         Nota::store($nota);
 
         $id = Nota::get($nota);

@@ -51,7 +51,6 @@ class Stok extends Model
         $length = count($request->nama);
         for ($i=0; $i < $length ; $i++) {
             $data = Stok::whereId($request->nama[$i])->first();
-            // return $request->jumlah[$i];
             Stok::whereId($request->nama[$i])->update([
                 'jumlah' => $data->jumlah + $request->jumlah[$i]
             ]);
