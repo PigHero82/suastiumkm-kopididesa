@@ -41,13 +41,11 @@
                                 <div class="card border-primary text-center bg-transparent">
                                   <div class="card-content d-flex">
                                     <div class="card-body">
-                                      <img src="{{ asset($item->gambar) }}" alt="element 06" height="150" class="mb-1">
-                                      <p class="card-text">{{ $item->nama }}</p>
+                                      <img src="{{ asset($item->gambar) }}" alt="element 06" height="150" class="img-fluid">
+                                      <p class="card-text mt-1">{{ $item->nama }}</p>
                                       <p class="card-text">Rp. {{ number_format($item->harga, 0, ',', '.') }}</p>
-                                      <div class="row justify-content-center">
-                                        <div class="col-3">
-                                          <input type="number" class="form-control text-center" name="menu[{{ $item->id }}]" id="#" minlength="1" min="1" max="99" placeholder="0">
-                                        </div>
+                                      <div class="row justify-content-center input{{ $item->id }}">
+                                          <button type="button" class="btn btn-success beli" data-value="{{ $item->id }}"><i class="feather icon-shopping-cart"></i> Beli</button>
                                       </div>
                                     </div>
                                   </div>
@@ -68,10 +66,8 @@
                                       <img src="{{ asset($item->gambar) }}" alt="element 06" height="150" class="mb-1">
                                       <p class="card-text">{{ $item->nama }}</p>
                                       <p class="card-text">Rp. {{ number_format($item->harga, 0, ',', '.') }}</p>
-                                      <div class="row justify-content-center">
-                                        <div class="col-3">
-                                          <input type="number" class="form-control text-center" name="menu[{{ $item->id }}]" id="#" minlength="1" min="1" max="99" placeholder="0">
-                                        </div>
+                                      <div class="row justify-content-center input{{ $item->id }}">
+                                        <button type="button" class="btn btn-success beli" data-value="{{ $item->id }}"><i class="feather icon-shopping-cart"></i> Beli</button>
                                       </div>
                                     </div>
                                   </div>
@@ -89,4 +85,14 @@
         </div>
     </section>
   <!-- Order Menu -->
+@endsection
+@section('js')
+    <script>
+      $(".beli").on( "click", function() {
+        var id = $(this).attr('data-value');
+        $(".input"+ id).html(`<div class="col-3">
+                                <input type="number" class="form-control text-center" name="menu[`+ id +`]" value="1" minlength="1" min="1" max="99" placeholder="0">
+                              </div>`);
+      });
+    </script>
 @endsection
