@@ -124,9 +124,9 @@
     </div>
 
     {{-- Modal Ubah --}}
-    <div class="modal fade text-left" id="#" tabindex="-1" role="dialog"
+    <div class="modal fade text-left" id="ubah" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel1">Tambah Pembelanjaan</h4>
@@ -137,23 +137,34 @@
           <form action="#" novalidate>
             <div class="modal-body">
               <div class="form-group">
+                <label>Gambar: </label>
+                <div class="controls" id="gambar">
+                  <img src="{{ asset('images/contoh.jpg ') }}" class="img-thumbnail">
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label>Nama: </label>
                 <div class="controls">
-                  <input type="text" name="text" class="form-control" value="Kopi (gr)" placeholder="Nama Bahan" required data-validation-required-message="Tidak boleh kosong">
+                  <select name="nama" class="form-control">
+                    @foreach ($stok as $item)
+                        <option value="{{ $item->id }}">{{ $item->nama }} ({{ $item->satuan }})</option>
+                    @endforeach
+                  </select>
                 </div>
               </div>
 
               <div class="form-group">
                 <label>Jumlah: </label>
                 <div class="controls">
-                  <input type="text" name="text" class="form-control" value="100" placeholder="Jumlah Bahan" data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="Hanya boleh diisi dengan angka." required data-validation-required-message="Tidak boleh kosong">
+                  <input type="text" name="jumlah" class="form-control" placeholder="Jumlah Bahan" data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="Hanya boleh diisi dengan angka." required data-validation-required-message="Tidak boleh kosong">
                 </div>
               </div>
 
               <div class="form-group">
-                <label>Biaya: </label>
+                <label>Harga: </label>
                 <div class="controls">
-                  <input type="text" name="text" class="form-control" value="50000" placeholder="Biaya Bahan" data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="Hanya boleh diisi dengan angka." required data-validation-required-message="Tidak boleh kosong">
+                  <input type="text" name="harga" class="form-control" placeholder="Biaya Bahan" data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="Hanya boleh diisi dengan angka." required data-validation-required-message="Tidak boleh kosong">
                 </div>
               </div>
 
@@ -188,7 +199,7 @@
                                       <div class="col-6">
                                         <select name="nama[]" class="form-control">
                                           @foreach ($stok as $item)
-                                              <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                              <option value="{{ $item->id }}">{{ $item->nama }} ({{ $item->satuan }})</option>
                                           @endforeach
                                         </select>
                                       </div>
