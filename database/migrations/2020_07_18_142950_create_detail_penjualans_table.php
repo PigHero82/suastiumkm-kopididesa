@@ -13,12 +13,12 @@ class CreateDetailPenjualansTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_penjualan', function (Blueprint $table) {
+        Schema::create('payment_details', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('penjualan_id');
-            $table->bigInteger('menu_id');
-            $table->integer('jumlah');
-            $table->float('harga', 8, 2);
+            $table->bigInteger('payment_id')->unsigned();
+            $table->bigInteger('menu_id')->unsigned();
+            $table->boolean('qty')->unsigned();
+            $table->mediumInteger('price')->unsigned();
         });
     }
 
@@ -29,6 +29,6 @@ class CreateDetailPenjualansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_penjualan');
+        Schema::dropIfExists('payment_details');
     }
 }

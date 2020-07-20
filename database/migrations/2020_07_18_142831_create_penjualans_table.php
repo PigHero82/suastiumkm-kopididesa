@@ -13,10 +13,10 @@ class CreatePenjualansTable extends Migration
      */
     public function up()
     {
-        Schema::create('penjualan', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->integer('total_harga')->nullable();
+            $table->integer('total')->nullable();
             $table->boolean('status')->nullable();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreatePenjualansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penjualan');
+        Schema::dropIfExists('payments');
     }
 }

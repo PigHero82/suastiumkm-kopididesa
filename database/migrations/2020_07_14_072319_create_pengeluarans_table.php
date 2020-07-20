@@ -13,12 +13,12 @@ class CreatePengeluaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengeluaran', function (Blueprint $table) {
+        Schema::create('costs', function (Blueprint $table) {
             $table->id();
-            $table->integer('idbahan');
-            $table->integer('idnota');
-            $table->integer('jumlah');
-            $table->integer('harga');
+            $table->mediumInteger('product_id')->unsigned();
+            $table->bigInteger('nota_id')->unsigned();
+            $table->mediumInteger('qty')->unsigned();
+            $table->mediumInteger('price')->unsigned();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePengeluaransTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengeluaran');
+        Schema::dropIfExists('costs');
     }
 }

@@ -6,19 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nota extends Model
 {
-    protected $table = 'nota';
-    protected $fillable = ['gambar'];
+    protected $table = 'notas';
+    protected $fillable = ['img', 'total'];
 
     public static function store($nota)
     {
         Nota::create([
-            'gambar' => $nota
+            'img' => $nota
         ]);
     }
 
     public static function get($nota)
     {
-        $data = Nota::where('gambar', $nota)->first();
+        $data = Nota::where('img', $nota)->first();
 
         return $data;
     }

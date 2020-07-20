@@ -13,9 +13,10 @@ class CreateNotasTable extends Migration
      */
     public function up()
     {
-        Schema::create('nota', function (Blueprint $table) {
+        Schema::create('notas', function (Blueprint $table) {
             $table->id();
-            $table->string('gambar');
+            $table->string('img');
+            $table->bigInteger('total')->unsigned();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateNotasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nota');
+        Schema::dropIfExists('notas');
     }
 }

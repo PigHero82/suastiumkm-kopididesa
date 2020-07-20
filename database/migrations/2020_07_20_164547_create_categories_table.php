@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHargaProduksisTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateHargaProduksisTable extends Migration
      */
     public function up()
     {
-        Schema::create('production_costs', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->integer('menu_id');
-            $table->integer('qty');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateHargaProduksisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('production_costs');
+        Schema::dropIfExists('categories');
     }
 }

@@ -13,11 +13,13 @@ class CreateStoksTable extends Migration
      */
     public function up()
     {
-        Schema::create('stok', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->text('nama');
-            $table->string('satuan');
-            $table->integer('jumlah');
+            $table->boolean('department_id')->unsigned();
+            $table->boolean('category_id')->unsigned();
+            $table->string('name');
+            $table->string('unit');
+            $table->mediumInteger('stock')->unsigned();
             $table->timestamps();
         });
     }
