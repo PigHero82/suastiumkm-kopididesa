@@ -5,7 +5,7 @@
 @section('judul')
     Stok
 @endsection
-@section('stokanactive')
+@section('stokactive')
     active
 @endsection
 @section('css')
@@ -86,6 +86,13 @@
               <label>Satuan: </label>
               <div class="controls">
                 <input type="text" name="satuan" class="form-control" placeholder="Satuan Bahan (gr, kg, ml, dll)" required data-validation-required-message="Tidak boleh kosong">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Stok Awal: </label>
+              <div class="controls">
+                <input type="text" name="satuan" class="form-control" placeholder="Stok Awal" value="0" required data-validation-required-message="Tidak boleh kosong">
               </div>
             </div>
 

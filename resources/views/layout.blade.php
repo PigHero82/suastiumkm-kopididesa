@@ -59,7 +59,11 @@
                                   </div></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="feather icon-power"></i> Logout</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </li>
                     </ul>
@@ -82,9 +86,7 @@
             </ul>
         </div>
         <div class="shadow-bottom"></div>
-        {{-- @include('kasir.sidebar') --}}
         @include('sidebar')
-        {{-- @include('superadmin.sidebar') --}}
     </div>
     <!-- END: Main Menu-->
 

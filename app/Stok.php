@@ -21,8 +21,7 @@ class Stok extends Model
         Stok::create([
             'nama' => $request->nama,
             'satuan' => $request->satuan,
-            // 'loket' => $request->loket,
-            'jumlah' => 0
+            'jumlah' => $request->jumlah
         ]);
     }
 

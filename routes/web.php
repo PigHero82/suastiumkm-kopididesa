@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::redirect('/', '/kasir', 301);
+Route::redirect('/', '/login', 301);
 
 //Superadmin
 Route::prefix('superadmin')->group(function () {
@@ -89,9 +89,12 @@ Route::prefix('admin/cafe')->group(function () {
         'store' => 'admin.cafe.store'
     ]);
     // Route::view('/', 'admin.pembelanjaan')->name('admin.pembelanjaan');
-    Route::resource('/stok', 'AdminCafe\StokController')->except(['update']);
-    Route::post('/stok/update', 'AdminCafe\StokController@update')->name('stok.update');
-    Route::view('/hpp', 'admin.hpp')->name('admin.hpp');
+    Route::resource('/stok', 'AdminCafe\StokController')->except(['update'])->names([
+        'index' => 'admin.cafe.stok.index',
+        'store' => 'admin.cafe.stok.store'
+    ]);
+    Route::post('/stok/update', 'AdminCafe\StokController@update')->name('admin.cafe.stok.update');
+    Route::view('/hpp', 'admin.hpp')->name('admin.cafe.hpp');
 });
 
 //Admin Resto

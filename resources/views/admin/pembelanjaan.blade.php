@@ -80,7 +80,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data" novalidate>
+          <form action="{{ route('admin.cafe.store') }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="modal-body">
               <div class="form-group">
