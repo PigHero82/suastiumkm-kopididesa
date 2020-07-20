@@ -44,13 +44,8 @@ class RoleSeeder extends Seeder
         ]);
 
         Role::create([
-            'name' => 'kasircafe',
-            'description' => 'Kasir Cafe'
-        ]);
-
-        Role::create([
-            'name' => 'kasirresto',
-            'description' => 'Kasir Restoran'
+            'name' => 'kasircaferesto',
+            'description' => 'Kasir Cafe & Restoran'
         ]);
 
         Role::create([

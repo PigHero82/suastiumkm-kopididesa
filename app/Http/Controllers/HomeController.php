@@ -38,10 +38,8 @@ class HomeController extends Controller
             return redirect()->route('admin.lain.index');
         } elseif (RoleUser::firstRole(Auth::user()->id)->name == 'kasirmart') {
             return redirect()->route('kasir.mart.home');
-        } elseif (RoleUser::firstRole(Auth::user()->id)->name == 'kasircafe') {
+        } elseif (RoleUser::firstRole(Auth::user()->id)->name == 'kasircaferesto') {
             return redirect()->route('kasir.cafe.home');
-        } elseif (RoleUser::firstRole(Auth::user()->id)->name == 'kasirresto') {
-            return redirect()->route('kasir.resto.home');
         } elseif (RoleUser::firstRole(Auth::user()->id)->name == 'kasirlain') {
             return redirect()->route('kasir.lain.home');
         }

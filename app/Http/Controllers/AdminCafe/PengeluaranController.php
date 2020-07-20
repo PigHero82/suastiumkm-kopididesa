@@ -5,9 +5,9 @@ namespace App\Http\Controllers\AdminCafe;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Cost;
 use App\Nota;
-use App\Pengeluaran;
-use App\Stok;
+use App\Product;
 
 class PengeluaranController extends Controller
 {
@@ -18,7 +18,7 @@ class PengeluaranController extends Controller
      */
     public function index()
     {
-        $stok = Stok::get();
+        $stok = Product::getProduct();
 
         return view('admin.pembelanjaan', compact('stok'));
     }
@@ -45,13 +45,13 @@ class PengeluaranController extends Controller
         $bukti = $request->file('nota');
         $nota = rand() . '.' . $bukti->getClientOriginalExtension();
         $bukti->move('images/produk', $nota);
-        Nota::store($nota);
+        Nota::storeNota($nota);
 
-        $id = Nota::get($nota);
+        $id = Nota::getNota($nota);
 
-        Pengeluaran::store($request, $id->id);
+        Cost::storeCost($request, $id->id);
 
-        Stok::storeStok($request);
+        Product::storeStok($request);
 
         return redirect()->back();
     }

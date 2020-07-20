@@ -36,14 +36,14 @@
                       <div class="tab-pane fade show active" id="kopi-panas" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
                           @foreach ($menu as $item)
-                            @if ($item->kategori == 1)
+                            @if ($item->category_id == 1)
                               <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="card border-primary text-center bg-transparent">
                                   <div class="card-content d-flex">
                                     <div class="card-body">
-                                      <img src="{{ asset($item->gambar) }}" alt="element 06" height="150" class="img-fluid">
-                                      <p class="card-text mt-1">{{ $item->nama }}</p>
-                                      <p class="card-text">Rp. {{ number_format($item->harga, 0, ',', '.') }}</p>
+                                      <img src="{{ asset($item->img) }}" alt="element 06" height="150" class="img-fluid">
+                                      <p class="card-text mt-1">{{ $item->name }}</p>
+                                      <p class="card-text">Rp. {{ number_format($item->old_price, 0, ',', '.') }}</p>
                                       <div class="row justify-content-center input{{ $item->id }}">
                                           <button type="button" class="btn btn-success beli" data-value="{{ $item->id }}"><i class="feather icon-shopping-cart"></i> Beli</button>
                                       </div>
@@ -58,14 +58,14 @@
                       <div class="tab-pane fade" id="kopi-dingin" role="tabpanel" aria-labelledby="kopi-dingin-tab">
                         <div class="row">
                           @foreach ($menu as $item)
-                            @if ($item->kategori == 2)
+                            @if ($item->category_id == 2)
                               <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="card border-primary text-center bg-transparent">
                                   <div class="card-content d-flex">
                                     <div class="card-body">
-                                      <img src="{{ asset($item->gambar) }}" alt="element 06" height="150" class="mb-1">
-                                      <p class="card-text">{{ $item->nama }}</p>
-                                      <p class="card-text">Rp. {{ number_format($item->harga, 0, ',', '.') }}</p>
+                                      <img src="{{ asset($item->img) }}" alt="element 06" height="150" class="mb-1">
+                                      <p class="card-text">{{ $item->name }}</p>
+                                      <p class="card-text">Rp. {{ number_format($item->old_price, 0, ',', '.') }}</p>
                                       <div class="row justify-content-center input{{ $item->id }}">
                                         <button type="button" class="btn btn-success beli" data-value="{{ $item->id }}"><i class="feather icon-shopping-cart"></i> Beli</button>
                                       </div>

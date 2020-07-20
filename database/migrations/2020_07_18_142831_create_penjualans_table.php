@@ -18,6 +18,7 @@ class CreatePenjualansTable extends Migration
             $table->bigInteger('user_id');
             $table->integer('total')->nullable();
             $table->boolean('status')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

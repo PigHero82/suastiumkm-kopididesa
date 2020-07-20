@@ -1,6 +1,6 @@
-@if (Auth::user()->firstRole(Auth::user()->id) == 'superadmin')
-@elseif (Auth::user()->firstRole(Auth::user()->id) == 'adminmart')
-@elseif (Auth::user()->firstRole(Auth::user()->id) == 'admincafe')
+@if (Auth::user()->firstRole(Auth::user()->id)->name == 'superadmin')
+@elseif (Auth::user()->firstRole(Auth::user()->id)->name == 'adminmart')
+@elseif (Auth::user()->firstRole(Auth::user()->id)->name == 'admincafe')
 <div class="main-menu-content">
   <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
       <li class="@yield('pembelanjaanactive') nav-item"><a href="{{ route('admin.cafe.index') }}"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Pembelanjaan">Pembelanjaan</span></a></li>
@@ -14,16 +14,15 @@
     </li>
   </ul>
 </div>
-@elseif (Auth::user()->firstRole(Auth::user()->id) == 'adminresto')
-@elseif (Auth::user()->firstRole(Auth::user()->id) == 'adminlain')
-@elseif (Auth::user()->firstRole(Auth::user()->id) == 'kasirmart')
-@elseif (Auth::user()->firstRole(Auth::user()->id) == 'kasircafe')
+@elseif (Auth::user()->firstRole(Auth::user()->id)->name == 'adminresto')
+@elseif (Auth::user()->firstRole(Auth::user()->id)->name == 'adminlain')
+@elseif (Auth::user()->firstRole(Auth::user()->id)->name == 'kasirmart')
+@elseif (Auth::user()->firstRole(Auth::user()->id)->name == 'kasircaferesto')
   <div class="main-menu-content">
     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <li class="@yield('kasiractive') nav-item"><a href="{{ route('kasir.cafe.home') }}"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Kasir">Kasir</span></a></li>
         <li class="@yield('pembelanjaanactive') nav-item"><a href="{{ route('kasir.cafe.penjualan') }}"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Penjualan">Penjualan</span></a></li>
     </ul>
   </div>
-@elseif (Auth::user()->firstRole(Auth::user()->id) == 'kasirresto')
-@elseif (Auth::user()->firstRole(Auth::user()->id) == 'kasirlain')
+@elseif (Auth::user()->firstRole(Auth::user()->id)->name == 'kasirlain')
 @endif

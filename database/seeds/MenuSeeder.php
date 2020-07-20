@@ -14,45 +14,57 @@ class MenuSeeder extends Seeder
     public function run()
     {
         Menu::create([
-            'nama'      => 'Kopi 1',
-            'harga'     => 10000,
-            'gambar'    => 'img/kopi/kopi1.jpg',
-            'kategori'  => 1
+            'department_id' => '2',
+            'category_id'   => '1',
+            'name'          => 'Kopi 1',
+            'img'           => 'img/kopi/kopi1.jpg',
+            'old_price'     => 10000,
+            'new_price'     => 10000,
         ]);
 
         Menu::create([
-            'nama'      => 'Kopi 2',
-            'harga'     => 20000,
-            'gambar'    => 'img/kopi/kopi2.jpg',
-            'kategori'  => 1
+            'department_id' => '2',
+            'category_id'   => '1',
+            'name'          => 'Kopi 2',
+            'img'           => 'img/kopi/kopi2.jpg',
+            'old_price'     => 20000,
+            'new_price'     => 20000,
         ]);
 
         Menu::create([
-            'nama'      => 'Kopi 3',
-            'harga'     => 30000,
-            'gambar'    => 'img/kopi/kopi3.jpg',
-            'kategori'  => 1
+            'department_id' => '2',
+            'category_id'   => '1',
+            'name'          => 'Kopi 3',
+            'img'           => 'img/kopi/kopi3.jpg',
+            'old_price'     => 30000,
+            'new_price'     => 30000,
         ]);
 
         Menu::create([
-            'nama'      => 'Kopi 4',
-            'harga'     => 40000,
-            'gambar'    => 'img/kopi/kopi4.jpg',
-            'kategori'  => 2
+            'department_id' => '2',
+            'category_id'   => '2',
+            'name'          => 'Kopi 4',
+            'img'           => 'img/kopi/kopi4.jpg',
+            'old_price'     => 40000,
+            'new_price'     => 40000,
         ]);
 
         Menu::create([
-            'nama'      => 'Kopi 5',
-            'harga'     => 50000,
-            'gambar'    => 'img/kopi/kopi5.jpg',
-            'kategori'  => 2
+            'department_id' => '2',
+            'category_id'   => '2',
+            'name'          => 'Kopi 5',
+            'img'           => 'img/kopi/kopi5.jpg',
+            'old_price'     => 50000,
+            'new_price'     => 50000,
         ]);
 
         Menu::create([
-            'nama'      => 'Kopi 6',
-            'harga'     => 60000,
-            'gambar'    => 'img/kopi/kopi6.jpg',
-            'kategori'  => 2
+            'department_id' => '2',
+            'category_id'   => '2',
+            'name'          => 'Kopi 6',
+            'img'           => 'img/kopi/kopi6.jpg',
+            'old_price'     => 60000,
+            'new_price'     => 60000,
         ]);
     }
 }

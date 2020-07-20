@@ -32,16 +32,16 @@
                                 <tbody>
                                     @foreach ($detailPenjualan['items'] as $item)
                                         <tr>
-                                            <td>{{ $item['nama'] }}<br>
-                                            <span class="ml-2">x {{ $item['jumlah'] }}</span>
+                                            <td>{{ $item['name'] }}<br>
+                                            <span class="ml-2">x {{ $item['qty'] }}</span>
                                             </td>
-                                            <td>Rp. {{ number_format($item['harga'], 0, ',', '.') }}</td>
+                                            <td>Rp. {{ number_format($item['price'], 0, ',', '.') }}</td>
                                             <td><button type="button" style="padding: 0; border: none; background: none;" class="action-edit text-danger" ><i class="feather icon-trash"></i></span></td>
                                         </tr>
                                     @endforeach
                                     <tr>
                                         <td class="text-right text-bold">TOTAL</td>
-                                        <td>Rp. {{ number_format($detailPenjualan['total_harga'], 0, ',', '.') }}</td>
+                                        <td>Rp. {{ number_format($detailPenjualan['total'], 0, ',', '.') }}</td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -84,7 +84,7 @@
                         <div class="form-group">
                             <div class="controls">
                                 <label>TOTAL: </label>
-                                <h2 class="ml-1 float-right">Rp. {{ number_format($detailPenjualan['total_harga'], 0, ',', '.') }}</h2>
+                                <h2 class="ml-1 float-right">Rp. {{ number_format($detailPenjualan['total'], 0, ',', '.') }}</h2>
                             </div>
                         </div>
                         <div class="form-group">

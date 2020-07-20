@@ -5,7 +5,7 @@ namespace App\Http\Controllers\AdminCafe;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Stok;
+use App\Product;
 
 class StokController extends Controller
 {
@@ -16,7 +16,7 @@ class StokController extends Controller
      */
     public function index()
     {
-        $stok = Stok::get();
+        $stok = Product::getProduct();
 
         return view('admin.stok', compact('stok'));
     }
@@ -39,7 +39,7 @@ class StokController extends Controller
      */
     public function store(Request $request)
     {
-        Stok::store($request);
+        Product::storeProduct($request);
 
         return redirect()->back();
     }
@@ -52,7 +52,7 @@ class StokController extends Controller
      */
     public function show($id)
     {
-        $data = Stok::getSingle($id);
+        $data = Product::firstProduct($id);
 
         return json_encode($data);
     }
@@ -77,7 +77,7 @@ class StokController extends Controller
      */
     public function update(Request $request)
     {
-        Stok::updateStok($request);
+        Stok::updateProduct($request);
 
         return redirect()->back();
     }
@@ -90,7 +90,7 @@ class StokController extends Controller
      */
     public function destroy($id)
     {
-        Stok::deleteStok($id);
+        Stok::deleteProduct($id);
 
         return redirect()->back();
     }

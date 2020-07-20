@@ -15,13 +15,12 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('product_id')->unsigned();
-            $table->boolean('category_id')->unsigned();
             $table->boolean('department_id')->unsigned();
+            $table->boolean('category_id')->unsigned();
             $table->string('name');
             $table->string('img');
             $table->mediumInteger('old_price')->unsigned();
-            $table->mediumInteger('new_price')->unsigned();
+            $table->mediumInteger('new_price')->unsigned()->nullable();
             $table->timestamps();
         });
     }

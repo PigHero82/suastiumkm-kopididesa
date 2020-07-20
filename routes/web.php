@@ -39,23 +39,11 @@ Route::prefix('mart')->group(function () {
     Route::view('/pembayaran', 'kasir.pembayaran')->name('kasir.pembayaran');
 });
 
-// Kasir Cafe
+// Kasir Cafe & Resto
 Route::prefix('cafe')->group(function () {
-    Route::get('/', 'KasirCafe\HomeController@index')->name('kasir.cafe.home');
-    Route::post('/pembayaran', 'KasirCafe\HomeController@pembayaran')->name('kasir.cafe.pembayaran');
-    Route::get('/penjualan', 'KasirCafe\HomeController@penjualan')->name('kasir.cafe.penjualan');
-});
-
-// Kasir Resto
-Route::prefix('resto')->group(function () {
-    Route::get('/', 'KasirResto\HomeController@index')->name('kasir.resto.home');
-    // Route::view('/', 'kasir.order')->name('kasir.order');
-    Route::resource('/', 'KasirCafe\KasirController')->names([
-        'index' => 'kasir.index',
-        'store' => 'kasir.store'
-    ]);
-    Route::view('/penjualan', 'kasir.penjualan')->name('kasir.penjualan');
-    Route::view('/pembayaran', 'kasir.pembayaran')->name('kasir.pembayaran');
+    Route::get('/', 'KasirCafeResto\HomeController@index')->name('kasir.cafe.home');
+    Route::post('/pembayaran', 'KasirCafeResto\HomeController@pembayaran')->name('kasir.cafe.pembayaran');
+    Route::get('/penjualan', 'KasirCafeResto\HomeController@penjualan')->name('kasir.cafe.penjualan');
 });
 
 // Kasir Lain-lain

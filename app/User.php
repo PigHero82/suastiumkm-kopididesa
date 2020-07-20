@@ -79,6 +79,6 @@ class User extends Authenticatable
     {
         $role_id = RoleUser::select('role_id')->where('user_id',$id)->first();
         $role = Role::find($role_id->role_id);
-        return $role->name;
+        return $role;
     }
 }
