@@ -17,16 +17,16 @@ class PaymentDetail extends Model
         foreach ($request->menu as $key => $value) {
             if ($value != null) {
                 $store['items'][] = [
-                    'payment_id' => $penjualanId,
-                    'menu_id' => $key,
-                    'price' => Menu::firstMenu($key)->new_price,
-                    'qty' => $value
+                    'payment_id'    => $penjualanId,
+                    'menu_id'       => $key,
+                    'price'         => Menu::firstMenu($key)->new_price,
+                    'qty'           => $value
                 ];
 
                 $data['items'][] = [
-                    'name' => Menu::firstMenu($key)->name,
+                    'name'  => Menu::firstMenu($key)->name,
                     'price' => Menu::firstMenu($key)->new_price,
-                    'qty' => $value
+                    'qty'   => $value
                 ];
 
                 $totalHarga += Menu::firstMenu($key)->new_price * $value;
@@ -35,6 +35,7 @@ class PaymentDetail extends Model
         PaymentDetail::insert($store['items']);
         Payment::whereId($penjualanId)->update(['total' => $totalHarga]);
         
+        $data['id'] = $penjualanId;
         $data['total'] = $totalHarga;
         return $data;
     }

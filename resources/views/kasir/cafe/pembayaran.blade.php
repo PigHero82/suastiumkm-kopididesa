@@ -79,8 +79,10 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="#" novalidate>
+                <form action="{{ route('kasir.cafe.validasiPembayaran') }}" method="POST" novalidate>
+                    @csrf
                     <div class="modal-body">
+                        <input type="text" name="id" value="{{ $detailPenjualan['id'] }}" hidden>
                         <div class="form-group">
                             <div class="controls">
                                 <label>TOTAL: </label>
@@ -97,6 +99,12 @@
                             <div class="controls">
                                 <label>Kembali: </label>
                                 <input type="text" disabled class="form-control" data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="Uang kurang.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="controls">
+                                <label>Keterangan: </label>
+                                <textarea name="description" class="form-control" cols="10"></textarea>
                             </div>
                         </div>
 

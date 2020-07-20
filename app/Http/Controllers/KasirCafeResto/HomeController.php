@@ -25,9 +25,17 @@ class HomeController extends Controller
 
     public function index()
     {
-        $menu = Menu::all();
+        $categories = Menu::distinct('menus.category_id')
+                            ->select('menus.category_id as id', 'categories.name')
+                            ->join('categories', 'menus.category_id', 'categories.id')
+                            ->where('menus.department_id', 2)
+                            ->orWhere('menus.department_id', 3)
+                            ->get();
+        $menu = Menu::where('department_id', 2)
+                        ->orWhere('menus.department_id', 3)
+                        ->get();
 
-        return view('kasir.cafe.order', compact('menu'));
+        return view('kasir.cafe.order', compact('categories', 'menu'));
     }
 
     public function pembayaran(Request $request)
@@ -36,6 +44,13 @@ class HomeController extends Controller
         $detailPenjualan = PaymentDetail::storePaymentDetail($penjualanId, $request);
 
         return view('kasir.cafe.pembayaran', compact('detailPenjualan'));
+    }
+
+    public function validasiPembayaran(Request $request)
+    {
+        $valid = Payment::validPayment($request);
+
+        return redirect()->route('kasir.cafe.home')->with('success', 'Transaksi berhasil');
     }
 
     public function penjualan()

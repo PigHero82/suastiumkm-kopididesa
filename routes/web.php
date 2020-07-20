@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::redirect('/', '/login', 301);
@@ -43,6 +43,7 @@ Route::prefix('mart')->group(function () {
 Route::prefix('cafe')->group(function () {
     Route::get('/', 'KasirCafeResto\HomeController@index')->name('kasir.cafe.home');
     Route::post('/pembayaran', 'KasirCafeResto\HomeController@pembayaran')->name('kasir.cafe.pembayaran');
+    Route::post('/validasi-pembayaran', 'KasirCafeResto\HomeController@validasiPembayaran')->name('kasir.cafe.validasiPembayaran');
     Route::get('/penjualan', 'KasirCafeResto\HomeController@penjualan')->name('kasir.cafe.penjualan');
 });
 

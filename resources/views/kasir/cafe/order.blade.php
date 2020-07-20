@@ -24,6 +24,12 @@
                 </div>
                 <div class="card-content">
                   <div class="card-body">
+                    @if ($message = Session::get('success'))
+                      <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert"><i class="feather icon-x"></i></button>
+                        {{ $message }}
+                      </div>
+                    @endif
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
                         <a class="nav-link active" id="kopi-panas-tab" data-toggle="tab" href="#kopi-panas" role="tab" aria-controls="home" aria-selected="true">Kopi Panas</a>
@@ -33,6 +39,7 @@
                       </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
+                      
                       <div class="tab-pane fade show active" id="kopi-panas" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
                           @foreach ($menu as $item)

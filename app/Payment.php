@@ -36,4 +36,12 @@ class Payment extends Model
 
         return $data->id;
     }
+
+    static function validPayment($request)
+    {
+        Payment::whereId($request->id)->update([
+            'status' => 1,
+            'description' => $request->description
+        ]);
+    }
 }
